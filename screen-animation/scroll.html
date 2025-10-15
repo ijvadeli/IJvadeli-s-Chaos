@@ -16,24 +16,39 @@
             This was my second Motion project, still getting started with everything. Most of this code is copy + paste <em>(Retype everything)</em> from the Motion docs. Best way to learn something is to write about it so lets get started.
         </p>
         <p>
-            
+            For the main-div with all the sub-divs I made simple classes corresponding to their function. 
         </p>
+        <pre class="codeBlock">
+            <code>
+    &lt;<b>div</b> <i>class</i><em>=</em><u>"scroll-menu"</u>&gt;
+        &lt;<b>section</b> <i>class</i><em>=</em><u>"scroll-item"</u>&gt;<em>Placeholder 1</em>&lt;/<b>section</b>&gt;
+        &lt;<b>section</b> <i>class</i><em>=</em><u>"scroll-item"</u>&gt;<em>Placeholder 2</em>&lt;/<b>section</b>&gt;
+        &lt;<b>section</b> <i>class</i><em>=</em><u>"scroll-item"</u>&gt;<em>Placeholder 3</em>&lt;/<b>section</b>&gt;
+        &lt;<b>section</b> <i>class</i><em>=</em><u>"scroll-item"</u>&gt;<em>Placeholder 4</em>&lt;/<b>section</b>&gt;
+    &lt;/<b>div</b>&gt;
+            </code>
+        </pre>
+        <p>
+            The goal of the scroll animation is to animate the elements when they get scrolled in and out of the view of the user. When the user scrolls over the element the animation gets played and it gets loaded in. When the user scrolls past the element it gets hidden again. This is in my opinion a very useful way to simplify animations and make the website feel a little bit more <em>alive</em>.
+        </p>
+
+        <div class="scroll-menu">
+            <section class="scroll-item"><pre>I'm</pre></section>
+            <section class="scroll-item"><pre>Gonna</pre></section>
+            <section class="scroll-item"><pre>Be</pre></section>
+            <section class="scroll-item"><pre>King of the Pirates!</pre></section>
+        </div>
+
         <ul><b>Animate</b>
             <li>opacity: 1</li>
             <li>x: [-100, 0]</li>
             <li>duration: 0.9</li>
             <li>easing: [0.10, 0.55, 0.55, 1]</li>
-            <li>Most of the animation is CSS</li>
+            <li>Most of the animation is CSS, recommend downloading the file for full view</li>
         </ul>
-        <a href="scroll.html" download>Download</a>
     </div>
 
-    <div class="scroll-menu">
-        <section class="scroll-item"><pre>Placeholder 1</pre></section>
-        <section class="scroll-item"><pre>Placeholder 2</pre></section>
-        <section class="scroll-item"><pre>Placeholder 3</pre></section>
-        <section class="scroll-item"><pre>Placeholder 4</pre></section>
-    </div>
+    <a href="scroll.html" download>Download</a>
 
     <script type="module">
         import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
