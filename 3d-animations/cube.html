@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <a href="../index.html">Home</a>
+    <div id="three-container"></div>
+
+    <script type="module">
+        import * as THREE from "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js"
+        import { animate, frame } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+        const main = document.getElementById("three-container")
+        const scene = new THREE.Scene({ alpha: true })
+        const camera = new THREE.PerspectiveCamera(
+            25,
+            main.offsetWidth / main.offsetHeight,
+            0.1,
+            1000
+        )
+        const renderer = new THREE.WebGLRenderer({ antialias: true })
+        renderer.setSize(main.offsetWidth, main.offsetHeight)
+        main.appendChild(renderer.domElement)
+
+        const geometry = new THREE.BoxGeometry()
+        const material = new THREE.MeshPhongMaterial({ color: 0x4ff0b7 })
+        const cube = new THREE.Mesh(geometry, material)
+        renderer.setClearColor(0xffffff, 0)
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
+        directionalLight.position.set(2, 2, 2)
+        const light = new THREE.AmbientLight(0x404040) // soft white light
+        scene.add(light)
+        scene.add(directionalLight)
+        scene.add(cube)
+
+        camera.position.z = 5
+
+        function rad(degrees) {
+            return degrees * (Math.PI / 180)
+        }
+        
+        /**
+         * Animate cube rotation
+         */
+        const customDur = 10;
+
+        function Dur1() {
+            customDur.value = 100;
+        }
+
+        animate(
+            cube.rotation,
+            { y: rad(360), z: rad(360) },
+            { duration: customDur, repeat: Infinity, ease: "linear" }
+        )
+
+        /**
+         * Create Three.js render loop using Motion's frameloop
+         */
+        frame.render(() => renderer.render(scene, camera), true)
+    </script>
+
+    <style>
+        #three-container {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+/*
+Codeblock styling + syntax 
+*/
+.codeBlock {
+    background-color: #202020;
+    color: grey;
+}
+
+.codeBlock em {
+    color: bisque;
+    font-style: normal;
+}
+
+.codeBlock b {
+    color: darkkhaki;
+    font-weight: normal;
+}
+
+.codeBlock i {
+    color: darkorange;
+    font-style: normal;
+}
+
+.codeBlock u {
+    color: darkolivegreen;
+    text-decoration: none;
+}
+
+/*
+Main Page styling
+*/
+body {
+    background-color: #252525;
+    color: lightgrey;
+}
+
+a {
+    color: darkorange;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+#logo {
+    width: 225px;
+    height: 200px;
+    float: left;
+    margin: 0px 25px;
+    color: darkolivegreen;
+}
+
+hr {
+    border: none;
+    border: 1px solid darkolivegreen;
+}
+
+header {
+    height: 200px;
+}
+
+body {
+    font-family: monospace;
+}

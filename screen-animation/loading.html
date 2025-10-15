@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header and About -->
+    <a href="../index.html">Home</a>
+    <div>
+        <h3>Loading Screen</h3>
+        <i>First Motion project, programmed by myself</i>
+        <h4>About</h4>
+        <p>
+            This is a small project I <em>(accidentally)</em> build when I was trying to figure out Motion. With the use of simple spinning animations and the type: "spring" property I had the genius idea to make a loading screen. I decided to build it out like how I imagined it in my head and came up with this. It isn't perfect but it works!
+        </p>
+        <p>
+            The plan was simple, duplicate the already existing div, duplicate it and put it into a parent div and change all the text in the subdivs to a corresponding letter. <em>(Quite messy, I know.)</em>
+        </p>
+<pre class="codeBlock">
+  <code>
+    &lt;<b>div</b> <i>id</i><em>=</em><u>"block"</u>&gt;
+        &lt;<b>div</b>&gt;<em>L</em>&lt;/<b>div</b>&gt;
+        &lt;<b>div</b>&gt;<em>o</em>&lt;/<b>div</b>&gt;
+        &lt;<b>div</b>&gt;<em>a</em>&lt;/<b>div</b>&gt;
+        &lt;<b>div</b>&gt;<em>d</em>&lt;/<b>div</b>&gt;
+        &lt;<b>div</b>&gt;<em>i</em>&lt;/<b>div</b>&gt;
+        &lt;<b>div</b>&gt;<em>n</em>&lt;/<b>div</b>&gt;
+        &lt;<b>div</b>&gt;<em>g</em>&lt;/<b>div</b>&gt;
+    &lt;/<b>div</b>&gt;
+  </code>
+</pre>
+        <p>
+            The animation already worked at this point, but I'll break it down for you <em>(and me)</em>.
+            I firstly made the script type "module" and then imported animate and stagger from the Motion library. Obviously animate can talk for itself but the stagger is like a delay for the animations inside the div. This makes them go in a smooth wave like pattern, almost like a chain reaction of animations. Next I made the actual animation, first based off of the basic animation <em>(spring)</em> showcased on the Motion docs. I then implemented the Infinity repeat feature and set the repeatType to reverse so it goes on and on and on <em>forever</em>. The duration etc. is not <em>that</em> important, so you can also just look at the animation specifications below. There is not alot of reason why I chose for certain durations, other than that making the duration too short or too long just looks ugly. Changing the bounce was also important, as you can see below. With bounce it looks more playful and less serious. Rotation also plays a role in making it less boring. Without it it looks kinda boring and lame, just like removing bounce.
+        </p>
+
+        <!-- Block ALTERNATIVE (With Bounce) (ANIMATION) -->
+        <h3>Animation With Bounce + Rotation</h3>
+        <div id="blockAlt">
+            <div>L</div>
+            <div>o</div>
+            <div>a</div>
+            <div>d</div>
+            <div>i</div>
+            <div>n</div>
+            <div>g</div>
+        </div>
+        <ul><b>Animate:</b>
+            <li>scale: [0, 1]</li>
+            <li>rotate: 360</li>
+            <li>type: "spring"</li>
+            <li>repeat: "Infinity"</li>
+            <li>repeatType: "reverse"</li>
+            <li>duration: 1</li>
+            <li>delay: stagger(0.1)</li>
+        </ul>
+
+        <!-- Block (ANIMATION) -->
+        <h3>Animation Without Bounce + Rotation</h3>
+        <div id="block">
+            <div>L</div>
+            <div>o</div>
+            <div>a</div>
+            <div>d</div>
+            <div>i</div>
+            <div>n</div>
+            <div>g</div>
+        </div>
+        <ul><b>Animate:</b>
+            <li>scale: [0, 1]</li>
+            <li>type: "spring"</li>
+            <li>repeat: "Infinity"</li>
+            <li>repeatType: "reverse"</li>
+            <li>duration: 1</li>
+            <li>delay: stagger(0.1)</li>
+            <li>bounce: 0</li>
+        </ul>
+    </div>
+
+    <a href="loading.html" download>Download</a>
+
+    <!-- Script source and import module -->
+    <script type="module">
+        import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+
+        animate(
+            "#block div",
+            { scale: [0, 1]},
+            { type: "spring", repeat: Infinity, repeatType: "reverse", duration: 1, delay: stagger(0.1), bounce: 0}
+        );
+
+        animate(
+            "#blockAlt div",
+            { scale: [0, 1],  rotate: 360},
+            { type: "spring", repeat: Infinity, repeatType: "reverse", duration: 1, delay: stagger(0.1)}
+        );
+    </script>
+
+    <!-- Styling of the page-->
+    <style>
+        #block {
+            display: flex;
+            justify-content: center;
+            background-color: #000000;
+            padding: 200px;
+        }
+        #block div {
+            font-family: monospace;
+            color: white;
+            text-align: center;
+            line-height: 25px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background-color: darkolivegreen;
+        }
+
+        #blockAlt {
+            display: flex;
+            justify-content: center;
+            background-color: #000000;
+            padding: 200px;
+        }
+        #blockAlt div {
+            font-family: monospace;
+            color: white;
+            text-align: center;
+            line-height: 25px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background-color: darkolivegreen;
+        }
+    </style>
+</body>
+</html>

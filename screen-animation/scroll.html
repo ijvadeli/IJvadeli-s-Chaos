@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <a href="../index.html">Home</a>
+    <div>
+        <h3>Scroll Animation</h3>
+        <i>Still getting started with Motion, uses most of the inView Motion template</i>
+        <h4>About</h4>
+        <p>
+            This was my second Motion project, still getting started with everything. Most of this code is copy + paste <em>(Retype everything)</em> from the Motion docs. Best way to learn something is to write about it so lets get started.
+        </p>
+        <p>
+            
+        </p>
+        <ul><b>Animate</b>
+            <li>opacity: 1</li>
+            <li>x: [-100, 0]</li>
+            <li>duration: 0.9</li>
+            <li>easing: [0.10, 0.55, 0.55, 1]</li>
+            <li>Most of the animation is CSS</li>
+        </ul>
+        <a href="scroll.html" download>Download</a>
+    </div>
+
+    <div class="scroll-menu">
+        <section class="scroll-item"><pre>Placeholder 1</pre></section>
+        <section class="scroll-item"><pre>Placeholder 2</pre></section>
+        <section class="scroll-item"><pre>Placeholder 3</pre></section>
+        <section class="scroll-item"><pre>Placeholder 4</pre></section>
+    </div>
+
+    <script type="module">
+        import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+        
+        inView(".scroll-item pre", (element) => {
+            animate(
+                element,
+                { opacity: 1, x: [-100, 0] },
+                {
+                    duration: 0.9,
+                    easing: [0.10, 0.55, 0.55, 1],
+                }
+            )
+
+            return () => animate(element, { opacity: 0, x: -100 })
+        })
+    </script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        #scroll-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scroll-item {
+            box-sizing: border-box;
+            width: 100svw;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            overflow: hidden;
+            padding: 50px;
+            background: var(--hue-1-transparent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scroll-item:nth-child(2) {
+            background: var(--hue-2-transparent);
+        }
+
+        .scroll-item:nth-child(3) {
+            background: var(--hue-3-transparent);
+        }
+
+        .scroll-item:nth-child(4) {
+            background: var(--hue-4-transparent);
+        }
+
+        .scroll-item pre {
+            font-size: 48px;
+            display: block;
+            transform: translateX(-100px);
+            opacity: 0;
+        }
+    </style>
+</body>
+</html>
