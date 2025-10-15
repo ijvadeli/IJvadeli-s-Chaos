@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <a href="../index.html">Home</a>
+    <div>
+        <h3>Wavy Text</h3>
+        <i>Small CSS and JS project</i>
+        <h4>About</h4>
+        <p>
+            This is <em>as the title suggests</em> wavy text. It's not super complicated, because the animation itself is CSS keyframes. The JavaScript looks at all the characters inside the text and seperates them. This makes the animation play for all the characters seperately resulting in this wave like pattern. I'm planning on adding sliders someday, so you can mess around with the code and maybe download it as a snippet to use for your own projects. For now, you can just download the file and have a look at the code yourself!
+        </p>
+
+        <h1 class="wavy-text" id="WavyText">THE WAVE</h1>
+
+        <ul><b>Animate:</b>
+            <li>0%, 100% - transform: translateY(0)</li>
+            <li>25% - transform: translateY(-5px)</li>
+            <li>50% - transform: translateY(5px)</li>
+            <li>75% - transform: translateY(-5px)</li>
+        </ul>
+    </div>
+
+    <a href="wave.html" download>Download</a>
+
+    
+    <!--
+    Motion Import (Currently not using)
+    <script type="module">
+        import { animate } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+    </script> -->
+
+    <style>
+        .wavy-text {
+            display: inline-block;
+            font-size: 3rem;
+        }
+        .wavy-text span {
+            display: inline-block;
+            animation: wave 1s infinite ease-in-out;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-5px);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+            75% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+    <script>
+        const textBlock = document.getElementById('WavyText');
+        const text = textBlock.textContent;
+        textBlock.innerHTML = text.split('').map((char, index) => {
+            return `<span style="animation-delay:${index * 0.1}s;">${char}</span>`;
+        }).join('');
+    </script>
+</body>
+</html>

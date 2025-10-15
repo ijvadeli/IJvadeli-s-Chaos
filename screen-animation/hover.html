@@ -16,16 +16,19 @@
             Hover animations can be nice, especially for buttons. However I just made some cubes that have different reactions when you hover over them. Try it for yourself! <em>I added some tooltips so when you hover over them it explains how it works!</em> For the basics: I imported the hover from Motion, to actually make them work when you hover over them. From this point on you just adjust some things in the code to make it work and <em>BOOM</em>, you got yourself an hoverable object. You should create a return function inside it so that it scales back (or rotates etc.) to it's original form because that isn't build in.
         </p>
         <ul><b>Animate:</b>
-            <li></li>
+            <li>scale 1.25 - return scale: 1</li>
+            <li>rotate: 180 - return rotate 0</li>
+            <li>scale: 0.5 - return scale: 1</li>
         </ul>
     </div>
 
     <div id="boxes">
         <div id="boxScale"></div>
         <div id="boxRotate"></div>
+        <div id="boxCard"></div>
     </div>
 
-    <a href="template.html" download>Download</a>
+    <a href="hover.html" download>Download</a>
 
     <script type="module">
         import { animate, hover } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
@@ -37,15 +40,15 @@
         })
 
         hover("#boxRotate", (element) => {
-            animate(
-                element,
-                { rotate: 180 }
-            )
+            animate(element, { rotate: 180 })
 
-            return () => animate(
-                element,
-                { rotate: 0 }
-            )
+            return () => animate(element, { rotate: 0 })
+        })
+
+        hover("#boxCard", (element) =>  {
+            animate(element, { scale: 0.5 })
+
+            return () => animate(element, { scale: 1 })
         })
     </script>
 
@@ -56,18 +59,9 @@
         }
         #boxes div {
             margin: 3px;
-        }
-
-        #boxScale {
-            width: 50px;
             height: 50px;
-            background-color: darkolivegreen;
-        }
-
-        #boxRotate {
             width: 50px;
-            height: 50px;
-            background-color: olive;
+            background-color: darkgray;
         }
     </style>
 </body>
