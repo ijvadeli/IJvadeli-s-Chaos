@@ -2,7 +2,7 @@
 Codeblock styling + syntax 
 */
 .codeBlock {
-    background-color: #202020;
+    background-color: #2a2e2f;
     color: grey;
 }
 
@@ -30,8 +30,10 @@ Codeblock styling + syntax
 Main Page styling
 */
 body {
-    background-color: #252525;
-    color: lightgrey;
+    margin: 15px;
+    padding: 0;
+    background-color: #2d3133;
+    color: #ccc8c1;
     font-family: monospace;
 }
 
@@ -53,16 +55,11 @@ ul, li {
 Logo + header styling
 */
 #logo {
-    width: 225px;
-    height: 200px;
-    float: left;
-    margin: 0px 25px;
-    color: darkolivegreen;
+    width: max-content;
+    color: darkkhaki;
 }
 
 header {
-    height: 200px;
-    border: 2px dashed darkolivegreen;
     border-radius: 2px;
     margin-bottom: 25px;
 }
