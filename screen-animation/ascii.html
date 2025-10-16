@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <a href="../index.html">Home</a>
+    <div>
+        <h3>Ascii Art Animations</h3>
+        <i>Simple Ascii art animations using JavaScript</i>
+        <h4>About</h4>
+        <p>
+            Alot of code for a simple animation. Yes I made this as one of my first <em>"fun"</em> JavaScript projects and it uses lines of &lt;pre&gt; tags that change every second. The tree below consists of 8 layers, each having a color and a height, the default height being 20px. I also set everything to flex so <em>everything is in it's right place</em>. Each layer has an animArray, with (most) of them having 2 lines = the first and second frame. A simple <em>for</em> loop causes the tree to loop through the lines of the array. Feel free to download the file and have a look at the code yourself. <em>This is a very old project, which is quite badly coded.</em>
+        </p>
+        <ul><b>Animate:</b>
+            <li>JavaScript for loop animation</li>
+            <li>Christmas is the only good time of the year</li>
+        </ul>
+    </div>
+
+    <a href="template.html" download>Download</a>
+
+    <script type="module">
+        import { animate } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm"
+    </script>
+
+    <script>
+        /*	
+        usage: ASCIIAnimation(param1, param2, param3)
+        
+        param1 - array of animation 'frames' (strings)
+        param2 - speed of animation in ms
+        param3 - DOM target, inserts animation to .innerHTML (retains spaces)
+        
+        ex: 
+        var anim1 = new ASCIIAnimation(["1","2","3"], 100, div1);
+    */
+
+    function ASCIIAnimation(animArray, speed, DOMtarget) {
+        var currentFrame = 0;
+        for(var i = 0; i < animArray.length; i++) {
+            animArray[i] = animArray[i].replace(/ /g,"&nbsp;");
+            animArray[i] = "<pre>" + animArray[i] + "</pre>";
+        }
+        DOMtarget.innerHTML = animArray[0];
+        currentFrame++;
+        this.animation = setInterval(function() {
+            DOMtarget.innerHTML = animArray[currentFrame];
+            currentFrame++;
+            if(currentFrame >= animArray.length) currentFrame = 0;
+        }, speed);
+        this.getCurrentFrame = function() {
+            return currentFrame;
+        }
+    }
+    
+    ASCIIAnimation.prototype.stopAnimation = function() {
+        clearInterval(this.animation);
+    }
+
+    function makeDiv() { return document.createElement("div"); }
+    function bodyAppend(element) { document.body.appendChild(element); }
+
+    // ---------- Layers
+
+    // Layer 1
+    var l1 = makeDiv();
+    bodyAppend(l1);
+    l1.style.color = "yellow";
+    l1.style.height = "20px";
+    l1.style.display = "flex";
+
+    var animArray1 = [
+        "           +           ",
+        "           x           ",
+    ];
+
+    // Layer 2
+    var l2 = makeDiv();
+    bodyAppend(l2);
+    l2.style.color = "green";
+    l2.style.height = "20px";
+    l2.style.display = "flex";
+
+    var animArray2 = [
+        "          / \\\          ",
+    ];
+
+    // Layer 3
+    var l3 = makeDiv();
+    bodyAppend(l3);
+    l3.style.color = "green";
+    l3.style.height = "20px";
+    l3.style.display = "flex";
+
+    var animArray3 = [
+        "         /  o\\\          ",
+        "         /  -\\\          ",
+    ];
+
+    // Layer 4
+    var l4 = makeDiv();
+    bodyAppend(l4);
+    l4.style.color = "green";
+    l4.style.height = "20px";
+    l4.style.display = "flex";
+
+    var animArray4 = [
+        "        /-    \\\          ",
+        "        /o    \\\          ",
+    ];
+
+    // Layer 5
+    var l5 = makeDiv();
+    bodyAppend(l5);
+    l5.style.color = "green";
+    l5.style.height = "20px";
+    l5.style.display = "flex";
+
+    var animArray5 = [
+        "       /  o   -\\\          ",
+        "       /  -   o\\\          ",
+    ];
+
+    // layer 6
+    var l6 = makeDiv();
+    bodyAppend(l6);
+    l6.style.color = "green";
+    l6.style.height = "20px";
+    l6.style.display = "flex";
+
+    var animArray6 = [
+        "      /-     o  \\\          ",
+        "      /o     -  \\\          ",
+    ];
+
+    // layer 7
+    var l7 = makeDiv();
+    bodyAppend(l7);
+    l7.style.color = "green";
+    l7.style.height = "20px";
+    l7.style.display = "flex";
+
+    var animArray7 = [
+        "     /o   -     o\\\          ",
+        "     /-   o     -\\\          ",
+    ];
+
+    // layer 8
+    var l8 = makeDiv();
+    bodyAppend(l8);
+    l8.style.color = "saddlebrown";
+    l8.style.height = "20px";
+    l8.style.display = "flex";
+
+    var animArray8 = [
+        "          | |               "
+    ];
+
+    // ---------- Animation speed
+
+    var l1 = new ASCIIAnimation(animArray1, 500, l1);
+    var l2 = new ASCIIAnimation(animArray2, 500, l2);
+    var l3 = new ASCIIAnimation(animArray3, 500, l3);
+    var l4 = new ASCIIAnimation(animArray4, 500, l4);
+    var l5 = new ASCIIAnimation(animArray5, 500, l5);
+    var l6 = new ASCIIAnimation(animArray6, 500, l6);
+    var l7 = new ASCIIAnimation(animArray7, 500, l7);
+    var l8 = new ASCIIAnimation(animArray8, 500, l8);
+    </script>
+
+    <style>
+
+    </style>
+</body>
+</html>
